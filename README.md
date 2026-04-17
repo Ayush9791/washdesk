@@ -45,8 +45,9 @@ npm run dev
 - **Order Detail Modal** — Full itemized receipt with inline status update
 - **Delete Orders** — Remove orders from the system
 - **Price List** — Visible in sidebar, loaded from API
-- **Demo Data** — 5 seeded orders on startup to populate the dashboard
-
+- **Statistics** — - Real-time analytics covering total orders, revenue, daily performance, and status-wise distribution
+- **Demo Data** — Seeded orders on startup to populate the dashboard
+- **Authentication** — Uses JWT-based authentication for Admin and Staff roles
 ---
 
 ## API Reference
@@ -124,13 +125,13 @@ Prices are hardcoded in `src/server.js` (easy to move to a DB or config file):
 - Adjusted the garment-row layout to keep calc column from overflowing on small widths
 - Added `position: sticky` to topbar and sidebar after noticing scroll behavior
 - Tweaked the demo seed data to have realistic spread across statuses and dates
+- Code review and fixed multiple tweaks
 
 ---
 
 ## Tradeoffs
 
 ### What was skipped
-- **Authentication** — No login/auth. Would add JWT + bcrypt with a users table for prod
 - **Persistent DB** — In-memory only. MongoDB or SQLite would be a 1-file addition
 - **Edit order** — Can update status but not garment details after creation
 - **Pagination** — No pagination on the orders table (fine for a store with <1000 orders/day)
@@ -138,7 +139,6 @@ Prices are hardcoded in `src/server.js` (easy to move to a DB or config file):
 
 ### What I'd improve with more time
 - **MongoDB integration** — `mongoose` model takes ~30 mins; swap `orders` array for `Order.find()`
-- **Authentication** — Basic JWT auth with a hardcoded admin user
 - **Order editing** — Allow adding/removing garments post-creation
 - **Print receipt** — `window.print()` with a styled receipt view per order
 - **Deploy** — Railway.app one-click deploy (already structured for it — just add `PORT` env var)
